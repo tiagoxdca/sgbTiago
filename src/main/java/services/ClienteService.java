@@ -16,19 +16,18 @@ public class ClienteService {
 	public Client register(Client c) {
 		c.setIndentifier(UUID.randomUUID()); // BR: client unique identifier
 		createAccount(c, c.getTypeClient());
-		return Persistence.addClient(c);
+		return c;
 	}
 
 	private void createAccount(Client c, ClientType clientType) {
 		Account account = new Account(c);
 		account.setIdentifier(UUID.randomUUID());
-		createCard(CardType.DEBIT, account, c);
-
 		if (c.getAccounts() == null || c.getAccounts().isEmpty()) {
 			List<Account> accounts = new ArrayList<>();
 			c.setAccounts(accounts);
 		}
 		c.getAccounts().add(account);
+        createCard(CardType.DEBIT, account, c);
 
 	}
 
@@ -50,6 +49,9 @@ public class ClienteService {
 			client.setCards(cards);
 		}
 		client.getCards().add(card);
+        String information = client.getClientInformation();
+        System.out.println(information);
+        Persistence.addClient(client);
 
 	}
 

@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 //@Data
 //@AllArgsConstructor
 //@Builder
@@ -16,22 +15,22 @@ public class Client {
 	
 	private UUID indentifier;
 	private String name;
-	private String internalNumber;
 	private String email;
 	private ClientType typeClient;
 	private List<Account> accounts;
 	private List<Card> cards;
 	
-	public Client(){
 
-	}
 
-	public Client(String name, ClientType typeClient) {
+
+
+    public Client(String name, ClientType typeClient) {
 		this.name = name;
 		this.typeClient = typeClient;
 	}
-	
-	public ClientType getTypeClient() {
+
+
+    public ClientType getTypeClient() {
 		return typeClient;
 	}
 	
@@ -63,18 +62,24 @@ public class Client {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getInternalNumber() {
-		return internalNumber;
-	}
-	public void setInternalNumber(String internalNumber) {
-		this.internalNumber = internalNumber;
-	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+    public String getClientInformation(){
+        return "Client{" +
+                "indentifier=" + indentifier +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", typeClient=" + typeClient +
+                ", account=" + accounts.get(0).getIdentifier() +
+                ", cards=" + cards +
+                '}';
+    }
 	
 	
 
