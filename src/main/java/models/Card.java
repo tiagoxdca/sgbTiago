@@ -20,7 +20,11 @@ public class Card {
 		this.cardType = type;
 		this.client = client;
 	}
-	
+
+	public UUID getCardIdentifier() {
+		return cardIdentifier;
+	}
+
 	public void transferTo(Account account, double value){}
 	
 	public void deposit(double value){}

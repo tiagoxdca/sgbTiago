@@ -3,7 +3,6 @@ package services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import models.Account;
 import models.Card;
 import models.CardType;
@@ -49,10 +48,22 @@ public class ClienteService {
 			client.setCards(cards);
 		}
 		client.getCards().add(card);
-        String information = client.getClientInformation();
-        System.out.println(information);
         Persistence.addClient(client);
+        showClientInformation(client);
+		System.out.println("------------------------------------------------------");
+
 
 	}
+
+	public void showClientInformation(Client client){
+        System.out.println("===========================");
+        System.out.println("\n Cliente criado com sucesso.\n");
+        System.out.println("Name:   " + client.getName());
+        System.out.println("Identifier:   " + client.getIndentifier());
+        System.out.println("Account Id:   " + client.getAccounts().get(0).getIdentifier());
+        System.out.println("Card Id:   " + client.getCards().get(0).getCardIdentifier());
+        System.out.println("\n =========================\n");
+
+    }
 
 }
